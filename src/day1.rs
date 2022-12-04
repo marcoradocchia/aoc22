@@ -75,7 +75,7 @@ fn main() -> io::Result<()> {
             .iter()
             .take(3)
             .map(|elf| {
-                println!("{}", elf);
+                println!("{elf}");
                 elf.cals
             })
             .sum::<usize>()
