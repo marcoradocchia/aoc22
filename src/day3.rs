@@ -19,7 +19,7 @@ impl Group {
             self.0.iter().map(|rucksack| rucksack.items()).collect();
 
         for item in &rucksack_items[0] {
-            if rucksack_items[1].contains(&item) && rucksack_items[2].contains(&item) {
+            if rucksack_items[1].contains(item) && rucksack_items[2].contains(item) {
                 return Ok(*item);
             }
         }
@@ -67,10 +67,10 @@ impl Item {
             _ => anyhow::bail!("rucksack contains unexpected item"),
         };
 
-        return Ok(match self.0.is_uppercase() {
+        Ok(match self.0.is_uppercase() {
             true => priority + 26,
             false => priority,
-        });
+        })
     }
 }
 
@@ -103,7 +103,7 @@ impl Rucksack {
     /// If Rucksack compartments have no items, return Err.
     fn find_shared_item(&self) -> Result<usize> {
         for item in &self.0 {
-            if self.1.contains(&item) {
+            if self.1.contains(item) {
                 return item.priority();
             }
         }
