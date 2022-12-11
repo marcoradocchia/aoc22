@@ -96,8 +96,7 @@ impl NewRope {
 
     /// Start movements.
     fn start(&mut self, movements: &[Movement]) {
-        let mut movements = movements.into_iter();
-        while let Some(movement) = movements.next() {
+        for movement in movements {
             for _ in 0..movement.amount {
                 // Move head.
                 self.move_head(&movement.direction);
@@ -197,8 +196,7 @@ impl Rope {
 
     /// Start movements.
     fn start(&mut self, movements: &[Movement]) {
-        let mut movements = movements.into_iter();
-        while let Some(movement) = movements.next() {
+        for movement in movements {
             for _ in 0..movement.amount {
                 // Move head.
                 self.move_head(&movement.direction);
